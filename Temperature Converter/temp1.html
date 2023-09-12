@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="temp1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Converter</title>
+</head>
+<body>
+    <div id="main">
+        <h1 style="font-family: 'Dosis',sans-serif;font-weight: 600;color:#00BFFF;">Temperature Converter
+            <i class="fa-solid fa-temperature-three-quarters" style="color: white;"></i>
+        </h1>
+      <div id="container">
+
+       <div class="r1c1" style="font-family:'Dosis',sans-serif; font-size: 28px;font-weight: 500;">
+        Degree
+       </div> 
+       <div class="r1c2" >
+         <input type="text" id="Degree" placeholder="Enter Degree" style="color: #E5E4E2;border: none; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 20px;">
+       </div>
+       <br><br>
+    
+         <div class="r2c1" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+            From:-
+         </div>
+         <div class="r2c2">   
+              <select name="temp" id="temp">
+                <option value="sel">--Select--</option>
+                <option value="cel">Celcius(℃)</option>
+                <option value="fah">Fahrenheit(℉)</option>
+                <option value="kel">Kelvin(K)</option>
+              </select>
+         </div>
+         <br>
+         <div class="r2c10" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+          To:-
+       </div>
+       <div class="r2c20">   
+            <select name="temp" id="temp0">
+              <option value="sel">--Select--</option>
+              <option value="cel">Celcius(℃)</option>
+              <option value="fah">Fahrenheit(℉)</option>
+              <option value="kel">Kelvin(K)</option>
+            </select>
+       </div>
+         <br>
+         <div class="r2c1" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+            
+         </div>
+         <div class="r3c1" style="font-family:'Dosis',sans-serif; font-size: 28px;font-weight: 500;">
+             Result
+         </div>
+         <div class="r3c2">    
+                  <input type="text" id="result" readonly>
+         </div>
+       <br><br>
+       <div class="r4">
+        <input type="submit" id="sub" value="CONVERT" onclick="converter()"
+        style=" width: 100%;
+        height: 100%;background-color:#0041C2;color: #87CEEB; font-size: 40px;
+        font-family: 'Dosis',sans-serif;font-weight: 500;">
+       </div>
+       <div class="r5">
+        <input type="submit" id="sub" value="CLEAR" onclick="cle()"
+        style=" width: 100%;
+        height: 100%;background-color:#0a317e;color: #87CEEB; font-size: 25px;
+        font-family: 'Dosis',sans-serif;font-weight: 500;">
+       </div>
+      </div> 
+    </div>
+</body>
+<script type="text/javascript">
+   function converter(){
+    var x= document.getElementById('temp');
+    var val=x.value;
+    var y= document.getElementById('temp0');
+    var val0=y.value;
+    if(val=="cel"&&val0=="cel"){
+      var a=document.getElementById('Degree').value;
+      var b=parseFloat(a);
+      document.getElementById('result').value=b.toFixed(4);
+    }
+    if(val=="fah"&&val0=="fah"){
+      var a=document.getElementById('Degree').value;
+      var b=parseFloat(a);
+      document.getElementById('result').value=b.toFixed(4);
+    }
+    if(val=="kel"&&val0=="kel"){
+      var a=document.getElementById('Degree').value;
+      var b=parseFloat(a);
+      document.getElementById('result').value=b.toFixed(4);
+    }
+    if(val=="cel"&&val0=="fah"){
+      var a=document.getElementById('Degree').value;
+      var b=parseFloat(a)*parseFloat(9)/parseFloat(5)+parseFloat(32);
+      document.getElementById('result').value=b.toFixed(4);
+    }
+    if(val=="cel"&&val0=="kel"){
+      var a=document.getElementById('Degree').value;
+      var b=parseFloat(a)+parseFloat(273.15);
+      document.getElementById('result').value=b.toFixed(4);
+    }
+    if(val=="fah"&&val0=="cel"){
+      var a=document.getElementById('Degree').value;
+      var b=(parseFloat(a)-parseFloat(32))*parseFloat(5)/parseFloat(9);
+      document.getElementById('result').value=b.toFixed(4);
+    }
+    if(val=="fah"&&val0=="kel"){
+      var a=document.getElementById('Degree').value;
+      var b=(parseFloat(a)+parseFloat(459.67))*parseFloat(5)/parseFloat(9);
+      document.getElementById('result').value=b.toFixed(4);
+    }
+    if(val=="kel"&&val0=="cel"){
+      var a=document.getElementById('Degree').value;
+      var b=(parseFloat(a)-parseFloat(273.15));
+      document.getElementById('result').value=b.toPrecision(5);
+    }
+    if(val=="kel"&&val0=="fah"){
+      var a=document.getElementById('Degree').value;
+      var b=parseFloat(a)*parseFloat(9)/parseFloat(5)-parseFloat(459.67);
+      document.getElementById('result').value=b.toPrecision(5);
+    }
+  
+   }
+   function cle(){
+    document.getElementById('Degree').value ="";
+    document.getElementById('result').value= "";
+   }
+
+</script>
+</html>
